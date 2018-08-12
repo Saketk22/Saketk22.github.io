@@ -19,7 +19,8 @@ function createPagination(totalResult, links, currentStreams, currentPage) {
 		next.setAttribute('class', 'arrow-right');
 		pagination.appendChild(prev);
 		var page = currentPage ? currentPage : 1;
-		pagination.innerHTML += '<span id=currentPage>'+page+'</span>'+'/'+currentStreams;
+		var pagesCount = totalResult > 10 ? Math.ceil(totalResult/10) : 1;
+		pagination.innerHTML += '<span id=currentPage>'+page+'</span>'+'/'+pagesCount;
 		pagination.setAttribute('id', 'paginationComponent');
 		pagination.appendChild(next);
 		pgComp.appendChild(pagination);
