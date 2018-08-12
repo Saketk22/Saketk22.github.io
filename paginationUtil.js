@@ -28,27 +28,30 @@ function createPagination(totalResult, links, currentStreams, currentPage) {
 		document.getElementById('prev').onclick = function() {
 			var currentPage = document.getElementById('currentPage');
 			var currentPageNumber = currentPage.innerHTML;
+			var prevPage = parseInt(currentPageNumber)-1;
 			if(currentPageNumber!=1){
 				currentPage.innerHTML = '';
-				currentPage.innerHTML = parseInt(currentPageNumber)-1;
-				twitchApi(false, links.prev, parseInt(currentPageNumber)-1 );
+				currentPage.innerHTML = prevPage;
+				twitchApi(false, links.prev, prevPage );
 			}
 		};
 		document.getElementById('next').onclick = function() {
+			var pages = pagesCount;
 			var currentPage = document.getElementById('currentPage');
 			var getOffsetCount = links.next.split('&');
-			var currentPageNumber = currentPage.innerHTML;
+			var currentPageNumber = parseInt(currentPage.innerHTML);
 			var link = links.next;
 			var nextCount = parseInt(getOffsetCount.filter(word => word.indexOf('offset') > -1)[0].split('=')[1]);
 			if(nextCount>totalResult){
 				var nextPageCount = nextCount - (nextCount-totalResult);
-				link.replace(nextCount.toString(), nextPageCount);
-				document.getElementById('next').removeEventListener("click");
+				link = link.replace(nextCount.toString(), nextPageCount);
 			}
-			twitchApi(false, link, parseInt(currentPageNumber)+1);
+			if(pages!= currentPageNumber){
+				twitchApi(false, link, currentPageNumber+1);
 			
 			currentPage.innerHTML = '';
-			currentPage.innerHTML = parseInt(currentPageNumber)+1;
+			currentPage.innerHTML = currentPageNumber+1;
+			}
 		};
 	}	
 }
