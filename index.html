@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<script type=text/javascript src="app.js"></script>
+	<script type=text/javascript src="validateQuery.js"></script>
+	<script type=text/javascript src="queryRendering.js"></script>
+  	<script type=text/javascript src="paginationUtil.js"></script>
+  </head>
+  <style>
+  	#infoPanel{
+  		padding: 10px;
+  	}
+  	.imgDiv, .info {
+		display: inline-block;
+  	}
+  	.info{
+  		width: 330px;
+  		padding-left: 40px;
+  		font-family: Helvetica Neue;
+  	}
+	#container{
+		margin: auto;
+		width: 50%;
+		border: 3px solid gray;
+		border-width: thin;
+	}
+	#searchComponent{
+		padding: 20px;
+		border-bottom: 1px solid gray;
+	}
+	#resultComp{
+		padding: 0px 20px;
+	}
+	.arrow-left{
+		width: 0;
+		height: 0;
+		border-bottom: 5px solid transparent;
+		border-top: 5px solid transparent;
+		border-right: 5px solid #2f2f2f;
+		font-size: 0;
+		line-height: 0; 
+		position: relative;
+		top: -4px;
+		margin-right: 4px;
+	}
+	.arrow-right{
+		width: 0; 
+		height: 0; 
+		border-bottom: 5px solid transparent; 
+		border-top: 5px solid transparent; 
+		border-left: 5px solid #2f2f2f;
+		font-size: 0;
+		line-height: 0;
+		position: relative;
+		top: -4px;
+		margin-left: 4px;
+	}
+	#paginationComponent{
+		float: right;
+		margin-right: 20px;
+	}
+	li{
+		list-style: none;
+	}
+	img{
+		width: 140px;
+		height: 140px;
+	}
+  </style>
+  <body>
+  	<div id="container">
+  		<div id="searchComponent">
+   	 		<input type="text" id="inputQuery" placeholder="Search query..."><input id="search" type="button" value="Search" onClick=twitchApi(true)>
+    		</div>
+    		<div id="component">
+    			<div id='infoPanel'>
+    				<span> Total results :</span>
+    				<span id='total'></span> 
+    			</div>
+    			<div id='resultComp'>
+    			</div>
+    		</div>
+    </div>
+  </body>
+</html>
