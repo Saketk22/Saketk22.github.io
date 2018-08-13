@@ -32,6 +32,7 @@ function createPagination(totalResult, links, currentStreams, currentPage) {
 			if(currentPageNumber!=1){
 				currentPage.innerHTML = '';
 				currentPage.innerHTML = prevPage;
+				pagination.innerHTML = '';
 				twitchApi(false, links.prev, prevPage );
 			}
 		};
@@ -47,6 +48,7 @@ function createPagination(totalResult, links, currentStreams, currentPage) {
 				link = link.replace(nextCount.toString(), nextPageCount);
 			}
 			if(pages!= currentPageNumber){
+				pagination.innerHTML = '';
 				twitchApi(false, link, currentPageNumber+1);
 			
 			currentPage.innerHTML = '';
